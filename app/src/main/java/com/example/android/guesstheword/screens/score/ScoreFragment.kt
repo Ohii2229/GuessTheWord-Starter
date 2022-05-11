@@ -41,17 +41,21 @@ class ScoreFragment : Fragment() {
             savedInstanceState: Bundle?
     ): View? {
 
-        // Inflate view and obtain an instance of the binding class.
+//            Inflate view and obtain an instance of the binding class.
         val binding: ScoreFragmentBinding = DataBindingUtil.inflate(
                 inflater,
                 R.layout.score_fragment,
                 container,
                 false
         )
+
         viewModelFactory = ScoreViewModelFactory(ScoreFragmentArgs.fromBundle(requireArguments()).score)
+
         viewModel = ViewModelProvider(this, viewModelFactory)
             .get(ScoreViewModel::class.java)
+
         binding.scoreText.text = viewModel.score.toString()
+
         return binding.root
     }
 
